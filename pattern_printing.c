@@ -1,29 +1,44 @@
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
 #include <stdlib.h>
 
 int main()
 {
+    int n;
+    scanf("%d", &n);
 
-  int n;
-  scanf("%d", &n);
-  int a[n][n];
-  int i, j;
-  for (i = 0; i < n * 2 - 1; i++)
-  {
-    for (j = 0; j < n * 2 - 1; j++)
+    // Dynamic memory allocation for a 2D array
+    int **a = (int **)malloc((2 * n - 1) * sizeof(int *));
+    for (int i = 0; i < 2 * n - 1; i++)
     {
-      a[i][j]=0;
+        a[i] = (int *)malloc((2 * n - 1) * sizeof(int));
     }
-  }
-   for (i = 0; i < n * 2 - 1; i++)
-  {
-    for (j = 0; j < n * 2 - 1; j++)
+
+    // Initialize the array
+    for (int i = 0; i < 2 * n - 1; i++)
     {
-      printf("%d\t",a[i][j]);
+        for (int j = 0; j < 2 * n - 1; j++)
+        {
+            a[i][j] = n;
+        }
     }
-    printf("\n");
-  }
-  return 0;
+
+    // Print the array
+    for (int i = 0; i < 2 * n - 1; i++)
+    {
+        for (int j = 0; j < 2 * n - 1; j++)
+        {
+            printf("%d\t", a[i][j]);
+            a[i+1][j+1]=n-1,n-1;
+        }
+        printf("\n");
+    }
+
+    // Free the allocated memory
+    for (int i = 0; i < 2 * n - 1; i++)
+    {
+        free(a[i]);
+    }
+    free(a);
+
+    return 0;
 }
