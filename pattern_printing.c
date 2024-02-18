@@ -22,13 +22,24 @@ int main()
         }
     }
 
+    // Update specific elements of the array
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = i; j < 2 * n - i-1; j++)
+        {
+            a[i][j] = n - 1;
+            a[j][i] = n - 1;
+            a[j][2 * n - i - 2] = n - 1;
+            a[2 * n - i - 2][j] = n - 1;
+        }
+    }
+
     // Print the array
     for (int i = 0; i < 2 * n - 1; i++)
     {
         for (int j = 0; j < 2 * n - 1; j++)
         {
             printf("%d\t", a[i][j]);
-            a[i+1][j+1]=n-1,n-1;
         }
         printf("\n");
     }
