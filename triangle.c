@@ -19,13 +19,23 @@ void sort_by_area(triangle *tr, int n)
         s[i] = (tr[i].a + tr[i].b + tr[i].c) / 2.0;
         area[i] = sqrt(s[i] * (s[i] - tr[i].a) * (s[i] - tr[i].b) * (s[i] - tr[i].c));
     }
-    for(int i=0;i<n;i++){
-        if(area[i]>area[i+1] && area[i]>area[i+2]){
-           float temp = area[i];
-           area[i]=area[i+1];
-           area[i+1]=temp;
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (area[j] > area[j + 1])
+            {
+                float temp = area[j];
+                area[j] = area[j + 1];
+                area[j + 1] = temp;
+                triangle temp1 = tr[j];
+                tr[j] = tr[j + 1];
+                tr[j + 1] = temp1;
+            }
         }
     }
+    free(area);
+    free(s);
 }
 
 int main()
