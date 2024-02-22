@@ -23,26 +23,25 @@ int main()
     }
 
     // Update specific elements of the array
-    int temp=n;
+    int temp = n;
     for (int i = 1; i < n; i++)
     {
-        for (int j = i; j < 2 * n - i-1; j++)
+        for (int j = i; j < 2 * n - i - 1; j++)
         {
-            
             a[i][j] = temp - 1;
             a[j][i] = temp - 1;
             a[j][2 * n - i - 2] = temp - 1;
             a[2 * n - i - 2][j] = temp - 1;
         }
-        temp=temp-1;
+        temp = temp - 1;
     }
 
-    // Print the array
+    // Print the array with adjusted formatting
     for (int i = 0; i < 2 * n - 1; i++)
     {
         for (int j = 0; j < 2 * n - 1; j++)
         {
-            printf("%d\t", a[i][j]);
+            printf("%2d ", a[i][j]); // Adjusted formatting
         }
         printf("\n");
     }
